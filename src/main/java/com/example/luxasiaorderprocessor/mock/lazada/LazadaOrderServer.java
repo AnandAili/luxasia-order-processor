@@ -3,7 +3,6 @@ package com.example.luxasiaorderprocessor.mock.lazada;
 
 import static org.mockserver.integration.ClientAndServer.startClientAndServer;
 
-import com.example.luxasiaorderprocessor.module.OrderDetail;
 import com.example.luxasiaorderprocessor.response.OrderDetails;
 import com.example.luxasiaorderprocessor.response.OrdersResponse;
 import com.google.common.net.MediaType;

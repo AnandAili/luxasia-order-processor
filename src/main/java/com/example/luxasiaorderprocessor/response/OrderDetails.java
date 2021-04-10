@@ -1,7 +1,6 @@
 package com.example.luxasiaorderprocessor.response;
 
 
-import com.example.luxasiaorderprocessor.module.OrderDetail;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,8 +1,10 @@
 /**
- * 
+ *
  */
 package com.example.luxasiaorderprocessor.module;
 
+import javax.persistence.Embeddable;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -10,8 +12,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
+@Builder
+@Embeddable
 public class AddressBilling  {
-	
+
 	private String country;
 	private String address3;
 	private String phone;
