@@ -19,9 +19,10 @@ public class ProductInventory  implements CommandLineRunner {
 	}
 
 	private void setProductQuantity() {
-		getProduct("ProductA",100);
-//		getProduct("ProductB",1);
-//		getProduct("ProductC",0);
+		getProduct("Bean Rester Dooby Red",100);
+		getProduct("calvinKien",50);
+		updateProductQuantity("Bean Rester Dooby Red",99);
+		updateProductQuantity("calvinKien",49);
 	}
 
 	private void getProduct(String productName, int stock) {
@@ -32,5 +33,14 @@ public class ProductInventory  implements CommandLineRunner {
 								.withBody(JsonBody.json(
 										new ProductStock(stock, productName)
 										, MediaType.JSON_UTF_8)));
+	}
+
+	private void updateProductQuantity(String productName, long quantity) {
+		mockServer
+				.when(HttpRequest.request().withMethod("PUT").withPath("/inventory/products")
+						.withQueryStringParameter("productName",productName)
+						.withQueryStringParameter("newQuantity", String.valueOf(quantity)))
+				.respond(
+						new HttpResponse().updateHeader("Content-Type", "application/json").withStatusCode(200));
 	}
 }

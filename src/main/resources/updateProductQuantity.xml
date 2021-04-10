@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Request>
+	<Product>
+		<Skus>
+			<Sku>
+				<ItemId>98108</ItemId>
+				<SkuId>234</SkuId>
+				<SellerSku>Apple-SG-Glod-64G</SellerSku>
+				<Price>1099.00</Price>
+				<SalePrice>900.00</SalePrice>
+				<SaleStartDate>2017-08-08</SaleStartDate>
+				<SaleEndDate>2017-08-31</SaleEndDate>
+				<MultiWarehouseInventories>
+					<MultiWarehouseInventory>
+						<WarehouseCode>warehouseTest1</WarehouseCode>
+						<Quantity>99</Quantity>
+					</MultiWarehouseInventory>
+				</MultiWarehouseInventories>
+			</Sku>
+		</Skus>
+	</Product>
+</Request>
