@@ -1,8 +1,10 @@
 package com.example.luxasiaorderprocessor.response;
 
 
+import com.example.luxasiaorderprocessor.model.OrderDetail;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class OrderDetails {
 	private long count;
@@ -11,7 +13,8 @@ public class OrderDetails {
 	public OrderDetails() {
 	}
 
-	public OrderDetails(long count, List<OrderDetail> orders) {
+	public OrderDetails(long count,
+			List<OrderDetail> orders) {
 		this.count = count;
 		this.orders = orders;
 	}
