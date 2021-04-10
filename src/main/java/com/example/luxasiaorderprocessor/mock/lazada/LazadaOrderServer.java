@@ -37,7 +37,7 @@ public class LazadaOrderServer implements CommandLineRunner {
 	}
 
 	private OrdersResponse dummyOrder() {
-		return new OrdersResponse(new OrderDetails(1, new ArrayList<>() {{
+		return new OrdersResponse(new OrderDetails(1, new ArrayList() {{
 			add(new Order("Aili - from Mock"));
 		}}));
 	}
