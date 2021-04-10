@@ -9,12 +9,5 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class EnableFeignConfiguration {
 
-	@Bean
-	RequestInterceptor requestInterceptor1() {
-		return (requestTemplate) -> {
-			//requestTemplate.header("main-traceId", "mian-traceid");
-		};
-	}
-
 
 }

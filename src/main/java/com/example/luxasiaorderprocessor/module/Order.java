@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class Order {
+public class OrderDetail {
 
     private String voucher_platform;
     private String  voucher;
@@ -40,7 +40,7 @@ public class Order {
     private String  gift_message;
     private String  remarks ;
     AddressShipping address_shipping;
-    
+
 
 	public Order() {
 	}

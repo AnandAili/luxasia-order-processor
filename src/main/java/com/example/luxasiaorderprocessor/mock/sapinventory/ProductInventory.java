@@ -19,12 +19,18 @@ public class ProductInventory  implements CommandLineRunner {
 	}
 
 	private void setProductQuantity() {
+		getProduct("ProductA",100);
+//		getProduct("ProductB",1);
+//		getProduct("ProductC",0);
+	}
+
+	private void getProduct(String productName, int stock) {
 		mockServer
-				.when(HttpRequest.request().withPath("/inventory/products/ProductA"))
+				.when(HttpRequest.request().withPath("/inventory/products/" + productName))
 				.respond(
 						new HttpResponse().updateHeader("Content-Type", "application/json").withStatusCode(200)
 								.withBody(JsonBody.json(
-										new ProductStock(2, "ProductA")
+										new ProductStock(stock, productName)
 										, MediaType.JSON_UTF_8)));
 	}
 }

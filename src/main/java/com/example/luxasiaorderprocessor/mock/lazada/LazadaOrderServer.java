@@ -3,7 +3,7 @@ package com.example.luxasiaorderprocessor.mock.lazada;
 
 import static org.mockserver.integration.ClientAndServer.startClientAndServer;
 
-import com.example.luxasiaorderprocessor.module.Order;
+import com.example.luxasiaorderprocessor.module.OrderDetail;
 import com.example.luxasiaorderprocessor.response.OrderDetails;
 import com.example.luxasiaorderprocessor.response.OrdersResponse;
 import com.google.common.net.MediaType;
@@ -37,8 +37,8 @@ public class LazadaOrderServer implements CommandLineRunner {
 	}
 
 	private OrdersResponse dummyOrder() {
-		return new OrdersResponse(new OrderDetails(1, new ArrayList() {{
-			add(new Order("Aili - from Mock"));
+		return new OrdersResponse(new OrderDetails(1, new ArrayList<>() {{
+			add(new OrderDetail(1L,"Aili - from Mock"));
 		}}));
 	}
 
