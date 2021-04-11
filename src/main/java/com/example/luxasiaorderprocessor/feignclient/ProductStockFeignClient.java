@@ -18,6 +18,6 @@ public interface ProductStockFeignClient {
 	ProductStock getProductQuantities(@PathVariable String productName);
 
 	@PutMapping("/inventory/products")
-	void updateProductStock(@RequestParam String productName, @RequestParam long newQuantity);
+	void updateProductStock(@RequestParam String productName, @RequestParam long quantity);
 
 }

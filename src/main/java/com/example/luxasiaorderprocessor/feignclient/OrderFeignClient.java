@@ -18,7 +18,7 @@ public interface OrderFeignClient {
 	OrdersItemResponse getOrderItem(@RequestParam String order_id);
 
 	@PostMapping("/product/price_quantity/update")
-	void updateProductQuantity(@RequestParam String item_id, @RequestParam int newQuantity);
+	void updateProductQuantity(@RequestParam String item_id, @RequestParam String quantity);
 
 
 
