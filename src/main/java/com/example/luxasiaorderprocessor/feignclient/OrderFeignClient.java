@@ -15,10 +15,10 @@ public interface OrderFeignClient {
 	OrdersResponse getOrders();
 
 	@RequestMapping(method = RequestMethod.GET, value = "/order/items/get")
-	OrdersItemResponse getOrderItem(@RequestParam String order_id);
+	OrdersItemResponse getOrderItem(@RequestParam("order_id") String order_id);
 
 	@PostMapping("/product/price_quantity/update")
-	void updateProductQuantity(@RequestParam String item_id, @RequestParam String quantity);
+	void updateProductQuantity(@RequestParam("item_id") String item_id, @RequestParam("quantity") String quantity);
 
 
 

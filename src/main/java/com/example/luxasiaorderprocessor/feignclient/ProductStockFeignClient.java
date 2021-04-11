@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ProductStockFeignClient {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/inventory/products/{productName}")
-	ProductStock getProductQuantities(@PathVariable String productName);
+	ProductStock getProductQuantities(@PathVariable("productName") String productName);
 
 	@PutMapping("/inventory/products")
-	void updateProductStock(@RequestParam String productName, @RequestParam long quantity);
+	void updateProductStock(@RequestParam("productName") String productName, @RequestParam("quantity") long quantity);
 
 }
