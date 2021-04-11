@@ -1,20 +1,19 @@
-package com.example.luxasiaorderprocessor.resources;
+package com.example.luxasiaorderprocessor.jobs;
 
 import com.example.luxasiaorderprocessor.feignclient.OrderFeignClient;
 import com.example.luxasiaorderprocessor.feignclient.ProductStockFeignClient;
 import com.example.luxasiaorderprocessor.mock.sapinventory.ProductStock;
-import com.example.luxasiaorderprocessor.model.OrderDetail;
 import com.example.luxasiaorderprocessor.repository.OrderRepository;
 import com.example.luxasiaorderprocessor.response.OrdersItemResponse;
 import com.example.luxasiaorderprocessor.response.OrdersResponse;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
-@RestController
-public class LuxasiaOrders {
+@Configuration
+@EnableScheduling
+public class BackgroupJobsConfig {
 
 	@Autowired
 	OrderFeignClient orderFeignClient;
@@ -25,10 +24,9 @@ public class LuxasiaOrders {
 	@Autowired
 	OrderRepository orderRepository;
 
- // schedular (2 min)
-
-	@GetMapping("/orders/{merketPlace}") // orders/lazada
-	public List<OrderDetail> getOrders(@PathVariable String merketPlace) {
+	@Scheduled(fixedDelay =60000)
+	public void getOrdersFromLazada() {
+		System.out.println("Process new Orders");
 		//1. TODO: get all orders from lazada   -- /orders/get (mocked)
 		OrdersResponse ordersResponse = orderFeignClient.getOrders();
 
@@ -54,6 +52,13 @@ public class LuxasiaOrders {
 					// 6.1. need to mock setProductQuantity
 					orderFeignClient.updateProductQuantity(orderItem.getOrder_item_id(),
 							String.valueOf(newQuantity));
+
+//					try {
+//						Thread.sleep(60000);
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
+					// TODO: update status to ready to SHIP
 				} else {
 					//TODO: cancel the order
 				}
@@ -65,12 +70,14 @@ public class LuxasiaOrders {
 
 
 
-    // ------
-    // 7. TODO: Update the ORder with ORDER_STATUS (SHIPPED)
-		// mock Update order status lazada call
 
-
-		return orderRepository.findAll();
 	}
 
+	@Scheduled(fixedDelay = 120000)
+	public void updateOrderStatusToShipped() {
+		System.out.println("Update status to shipped");
+		// ------
+		// 7. TODO: Update the ORder with ORDER_STATUS (SHIPPED)
+		// mock Update order status lazada call
+	}
 }
